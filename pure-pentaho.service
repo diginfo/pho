@@ -1,0 +1,16 @@
+[Unit]
+Description=Pure Pentaho Server
+
+[Service]
+User=root
+WorkingDirectory=/usr/share/java/pho
+Type=forking
+ExecStart=/bin/bash /usr/share/java/pho/pure-pentaho.sh start
+ExecStop=/bin/bash /usr/share/java/pho/pure-pentaho.sh start
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
