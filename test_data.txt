@@ -1,0 +1,70 @@
+telnet localhost 9898
+
+prpt/pac_test2.prpt
+===================
+API REQUEST
+===========
+{"conn":{"user":"root","password":"bukit8002","host":"localhost","database":"sampledata","engine":"mysql"},"param":{"_coalias":"PAC","req_file":"pac_test2.prpt","format":"html","file":"prpt/pac_test2.prpt","xx":null},"tables":{"vwltsa^test":[{"C2":"X1","C1":"X2","C3":"X3"},{"C3":"X11","C2":"X21","C1":"X31"},{"C1":"X14","C2":"X24","C3":"X34"}]},"api":{"url":"http://localhost:3030","param":"_api=y&_format=json&userid=SYSTEM&_func=get&_sqlid=admin^usersdata"}}
+
+TABLE DATA REQUEST
+==================
+{"conn":{"user":"root","password":"bukit8002","host":"localhost","database":"sampledata","engine":"mysql"},"param":{"_coalias":"PAC","req_file":"pac_test2.prpt","format":"html","file":"prpt/pac_test2.prpt","xx":null},"tables":{"vwltsa^test":[{"C2":"X1","C1":"X2","C3":"X3"},{"C3":"X11","C2":"X21","C1":"X31"},{"C1":"X14","C2":"X24","C3":"X34"}]}}
+
+pentaho vars:
+============
+  {
+  
+  "conn":{
+    "user":"root",
+    "password":"bukit8002",
+    "host":"localhost",
+    "database":"MYDEV",
+    "engine":"mysql",
+    "sqlite":"/usr/share/nodejs/dev/run/pure3/data/dwap.db"
+  },
+
+  "param":{
+    "file":"/usr/share/nodejs/dev/run/pure3/prpt/inv_part_trans_report_by_txdate.prpt",
+    "req_file":"inv_part_trans_report_by_txdate.prpt",
+    "_imgpath":"/usr/share/nodejs/dev/run/pure3/data/public/files/",
+    "_pureport":"3030",
+    "_isdev":true,
+    "format":"pdf",
+    "_docref":"",
+    "_userid":"CLS",
+    "_couid":"omsjb",
+    "_coname":"OMS Oilfield Services Sdn Bhd",
+    "_coaddr1":"PLO 31, Jalan Teknologi 2",
+    "_coaddr2":"Taman Teknologi Johor, 81400 Senai",
+    "_coaddr3":"Johor Bahru, Malaysia",
+    "_coalias":"Pure3",
+    "_currency_id":"MYR",
+    "_gst_id":"GST6",
+    "_cotel":"+607 598 9161",
+    "_cofax":"+607 598 9164",
+    "_remitname":null,
+    "_remitaddr1":null,
+    "_remitaddr2":null,
+    "_remitaddr3":null,
+    "_remittel":null,
+    "_remitfax":null,
+    "_groupuid":"oms",
+    "_costing_currency_id":"USD"
+    "_sites":[{"id":"pure3","db":"MYDEV"}],
+    "_pureugrps":["SYSADM","CAL-EDITOR","CERTDELETOR","CF-EDITOR","CPAR-EDITOR","INSTRUCTOR","NCR-APPROVE","NCR-EDITOR","TASK-EDITOR","JOB-STATUS","OPN-GRL","OTD-EDITOR","SALES-PRICING"],
+    
+    
+    "TXDATE":"2018-08-17",
+    "IS_CONSUMABLE":"y",
+    "WITH_QTY":"y",
+  }
+}
+
+user_securityaccess_table.prpt
+==============================
+{"conn":{"user":"root","password":"bukit8002","host":"localhost","database":"MYDEV","engine":"mysql","sqlite":"/usr/share/nodejs/dev/run/pure3/data/dwap.db"},"param":{"_pureport":"3030","_isdev":true,"_format":"html","_path":"/usr/share/nodejs/dev/run/pure3/prpt/user_securityaccess_table.prpt","_imgpath":"/usr/share/nodejs/dev/run/pure3/data/public/files/","_fname":"user_securityaccess_table.prpt","_docref":"","_sites":[{"id":"pure3","db":"MYDEV"}],"_pureugrps":["TASK-EDITOR","JOB-STATUS","SALES-PRICING","SYSADM","OSS-TICKET-EDIT","OSS-CONSOL-EDIT"],"_userid":"PAC","_couid":"omsjb","_coname":"OMS Oilfield Services Sdn Bhd","_coaddr1":"PLO 31, Jalan Teknologi 2","_coaddr2":"Taman Teknologi Johor, 81400 Senai","_coaddr3":"Johor Bahru, Malaysia","_coalias":"Pure3","_currency_id":"MYR","_gst_id":"GST6","_cotel":"+607 598 9161","_cofax":"+607 598 9164","_remitname":null,"_remitaddr1":null,"_remitaddr2":null,"_remitaddr3":null,"_remittel":null,"_remitfax":null,"_groupuid":"oms","_costing_currency_id":"USD","PART_ID":"A8000"}}
+
+
+sales_sales_order_report_WLHTEST.pdf
+====================================
+{"conn":{"user":"root","password":"bukit8002","host":"localhost","database":"OMSSGTEST","engine":"mysql","sqlite":"/usr/share/dev/nodejs/run/pure3/data/dwap.db"},"param":{"_pureport":"3004","_isdev":false,"_docref":"","_sites":[{"id":"omssgtest","db":"OMSSGTEST"},{"id":"puremaster","db":"PUREMASTER"}],"_imgpath":"/usr/share/dev/nodejs/run/pure3/data/public/files/","_path":"/usr/share/dev/nodejs/run/pure3/prpt/sales_sales_order_report_WLHTEST.prpt","_format":"pdf","_fname":"sales_sales_order_report_WLHTEST.prpt","START_SO_ID":"3510019289","END_SO_ID":"3510020320","_pureugrps":["TASK-EDITOR","JOB-STATUS","SALES-PRICING","SYSADM","OSS-TICKET-EDIT","OSS-CONSOL-EDIT"],"_userid":"PAC","_couid":"omsjb","_coname":"OMS Oilfield Services Sdn Bhd","_coaddr1":"PLO 31, Jalan Teknologi 2","_coaddr2":"Taman Teknologi Johor, 81400 Senai","_coaddr3":"Johor Bahru, Malaysia","_coalias":"Pure3","_currency_id":"MYR","_gst_id":"GST6","_cotel":"+607 598 9161","_cofax":"+607 598 9164","_remitname":null,"_remitaddr1":null,"_remitaddr2":null,"_remitaddr3":null,"_remittel":null,"_remitfax":null,"_groupuid":"oms","_costing_currency_id":"USD","_opath":"/root/sales_sales_order_report_WLHTEST.pdf"}}
