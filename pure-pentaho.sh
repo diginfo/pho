@@ -4,12 +4,13 @@ ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PORT="-Dport=9898"
 CACHE="/var/cache/pentaho"
-#OPTS="-server -Xms512m -Xmx1024m"
-OPTS="-server -Dmaxrun=30000"
+#OPTS="-server -Xms512m -Xmx1024m -Xms512m -Xmx1024m"
+OPTS="-server -Dmaxrun=60000"
 #LOGS="-Dlog4j.configuration=purepentaho/log4j.properties"
+#LOGS="-Dlog4j.configuration=file:log4j.dev.properties"
 LOGS="-Dlog4j.configuration=file:log4j.properties"
 
-EHOFF="-Dnet.sf.ehcache.disabled=false"
+EHOFF="-Dnet.sf.ehcache.disabled=true"
 EHPATH="-Dnet.sf.ehcache.config.location=../ehcache.xml"
 
 if [ ! -d "$CACHE" ]; then
@@ -17,17 +18,39 @@ if [ ! -d "$CACHE" ]; then
   chmod 777 $CACHE
 fi
 
-function stop {
+function logbackup {
+  NOW=`date +%y%m%d%H%M`
   ## Backup the logs
-  cp -p $ROOT/log/pure-pentaho.log $ROOT/log/pure-pentaho.bak.log
+  cp -p $ROOT/log/pure-pentaho.log $ROOT/log/pure-pentaho.$NOW.log
+}
+
+function stop {
   cd "$(dirname "$0")"
   pkill -f PurePentaho
 }
 
+function status {
+  UP=$(ps aux | grep [P]urePentaho)  
+  if [ -z "$UP" ]; then
+    STATUS="stopped"
+  else
+    STATUS="running"
+  fi
+}
+
 function start {
+  
+  ## TEST IF RUNNING
+  status;
+  if [[ $STATUS == "running" ]]; then
+    exit 0;
+  fi
+  
+  logbackup;
+  
   ## Execute .jar file
   cd "$(dirname "$0")"
-  /usr/bin/java $EHOFF $EHPATH $OPTS $PORT $LOGS -jar PurePentaho.jar &
+  /usr/bin/java $EHOFF $OPTS $PORT $LOGS -jar PurePentaho.jar &>/dev/null &
   ## Execute .class (remove package name from .java files)
   #java $OPTS $PORT $LOGS -cp ./lib/*:./run PurePentaho  
 }
@@ -42,15 +65,24 @@ if [[ $1 ]]; then
 	MSG=$1
   if [[ $1 == "start" ]]; then
     start
-  
+    exit 0;
+      
   elif [[ $1 == "stop" ]]; then
     stop
-  
+    exit 0;
+      
   elif [[ $1 == "restart" ]]; then
     restart
+    exit 0;
+
+  elif [[ $1 == "status" ]]; then
+    status
+    echo "$STATUS";
+    exit 0;
 
   else
     exit 1
+  
   fi
 
 else
