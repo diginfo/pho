@@ -26,7 +26,13 @@ function logbackup {
 
 function stop {
   cd "$(dirname "$0")"
-  pkill -f PurePentaho
+  PID=$(pgrep -f "java -Dnet.sf.ehcache.disabled")
+  if [ ! -z "$PID" ]; then
+    while kill -9 $PID 2>/dev/null; do 
+      echo "Waiting for $PID stop..."
+      sleep 1
+    done
+  fi
 }
 
 function status {
