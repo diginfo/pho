@@ -1,4 +1,11 @@
+ITGT="/usr/share/java/pho"
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ $ROOT != "$ITGT" ]; then
+  echo "Please install in $TGT"
+  exit 0;
+fi
+
 cd $ROOT
 
 TGT="/usr/share/java";
