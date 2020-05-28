@@ -1,5 +1,6 @@
 ITGT="/usr/share/java/pho"
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BRC="/etc/bashrc.dis";
 
 if [ $ROOT != "$ITGT" ]; then
   echo "Please install in $TGT"
@@ -29,7 +30,17 @@ function pho_ {
   echo "@@@ PURE-PENTAHO INSTALLED.";
 }
 
-## DISABLED - This is not proven / Tested
+function _alias {
+  if [ ! -f "$BRC" ]; then
+    echo ". $BRC" >> /etc/bash.bashrc
+  fi
+  echo "alias pure-pentaho-start=\"service pure-pentaho start\"" > $BRC;
+  echo "alias pure-pentaho-stop=\"service pure-pentaho stop\"" >> $BRC;
+  echo "alias pure-pentaho-restart=\"service pure-pentaho restart\"" >> $BRC;
+  echo "alias pure-pentaho-logs=\"tail -f $ITGT/log/pure-pentaho.log\"" >> $BRC;
+  source /etc/bash.bashrc;
+}
+
 function service_ {
   cp -rp $ROOT/pure-pentaho.service /etc/systemd/system
   chmod u+x /etc/systemd/system/pure-pentaho.service
