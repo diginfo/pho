@@ -5,7 +5,7 @@ ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PORT="-Dport=9898"
 CACHE="/var/cache/pentaho"
 #OPTS="-server -Xms512m -Xmx1024m -Xms512m -Xmx1024m"
-OPTS="-server -Dmaxrun=60000"
+OPTS="-server -Dmaxrun=60000 -Djava.awt.headless=true"
 #LOGS="-Dlog4j.configuration=purepentaho/log4j.properties"
 #LOGS="-Dlog4j.configuration=file:log4j.dev.properties"
 LOGS="-Dlog4j.configuration=file:log4j.properties"
@@ -26,7 +26,7 @@ function logbackup {
 
 function stop {
   cd "$(dirname "$0")"
-  PID=$(pgrep -f "java -Dnet.sf.ehcache.disabled")
+  PID=$(pgrep -f "PurePentaho.jar")
   if [ ! -z "$PID" ]; then
     while kill -9 $PID 2>/dev/null; do 
       echo "Waiting for $PID stop..."
