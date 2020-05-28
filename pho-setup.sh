@@ -17,7 +17,7 @@ function java_ {
   apt-get -y update
   apt remove --purge -y default-jdk
   apt -y install software-properties-common
-  apt install -y default-jdk;
+  apt install -y openjdk-8-jre;
   echo "@@@@ JAVA INSTALL DONE.";
 }
 
