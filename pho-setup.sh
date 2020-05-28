@@ -16,7 +16,7 @@ BASHDIS="/etc/bashrc.dis";
 function java_ {
   apt-get -y update
   apt remove --purge -y default-jdk
-  apt install -y openjdk-8-jre;
+  apt install -y openjdk-8-jre-headless;
   echo "@@@@ JAVA INSTALL DONE.";
   mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
   echo -e "## file moved to accessibility.properties.orig by pho-setup.sh\n\n" > /etc/java-8-openjdk/accessibility.properties
