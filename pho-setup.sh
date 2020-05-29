@@ -13,14 +13,27 @@ TGT="/usr/share/java";
 REPO="https://github.com/diginfo/pho.git";
 BASHDIS="/etc/bashrc.dis";
 
+# -Djava.awt.headless=true = no-charts
+# -Djava.awt.headless=false = crash
+
+function rm_ {
+  mv /etc/java-8-openjdk/accessibility.properties.org /etc/java-8-openjdk/accessibility.properties;
+  apt remove --purge -y libjfreechart-java default-jdk openjdk-8-jre openjdk-8-jre-headless;
+  systemctl disable pure-pentaho.service;
+  systemctl stop pure-pentaho;
+  systemctl daemon-reload;
+  rm -rf /etc/systemd/system/pure-pentaho.service;
+  apt -y autoremove;
+}
+
 ## Install Java
 function java_ {
   apt-get -y update
   apt remove --purge -y default-jdk openjdk-8-jre openjdk-8-jre-headless
   apt install -y openjdk-8-jre libjfreechart-java;
   echo "@@@@ JAVA INSTALL DONE.";
-  mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
-  echo -e "## file moved to accessibility.properties.orig by pho-setup.sh\n\n" > /etc/java-8-openjdk/accessibility.properties
+  # mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
+  # echo -e "## file moved to accessibility.properties.orig by pho-setup.sh\n\n" > /etc/java-8-openjdk/accessibility.properties
 }
 
 function pho_ {
@@ -50,8 +63,14 @@ function service_ {
   systemctl status pure-pentaho
 }
 
-## Execute
-java_;
-service_;
-alias_;
+if[ $1 == "" ];then
+  echo "Removing JRE and Pentaho..."
+  rm_;
+  exit 0;
+else
+  ## Execute
+  java_;
+  service_;
+  alias_;
+fi;
 
