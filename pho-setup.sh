@@ -63,7 +63,8 @@ function service_ {
   systemctl status pure-pentaho
 }
 
-if[ $1 == "rm" ];then
+if 
+[ $1 == "rm" ];then
   echo "Removing JRE and Pentaho..."
   rm_;
   exit 0;
