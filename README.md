@@ -1,11 +1,12 @@
 <h1>Pure Pentaho Report Server</h1>
 
 <h2>Install</h2>
+
 ```bash
-    cd /usr/share/java
-    git clone https://github.com/diginfo/pho.git
-    cd /usr/share/java/pho
-    ./pho-setup.sh
+  cd /usr/share/java
+  git clone https://github.com/diginfo/pho.git
+  cd /usr/share/java/pho
+  ./pho-setup.sh
 ```
 
 <h2>Service</h2>
