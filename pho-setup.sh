@@ -32,9 +32,8 @@ function _wait {
   _continue;
 }
 
-
 function rm_ {
-  wait_ "Remove & Purge Java & Pentaho ?"
+  _wait "Remove & Purge Java & Pentaho ?"
   apt remove --purge -y libjfreechart-java default-jdk openjdk-8-jre openjdk-8-jre-headless;
   systemctl disable pure-pentaho.service;
   systemctl stop pure-pentaho;
@@ -45,7 +44,7 @@ function rm_ {
 
 ## Install Java
 function _java {
-  wait_ "Update O/S and Install ?
+  _wait "Update O/S and Install ?
   apt-get -y update;
   apt install -y openjdk-8-jre libjfreechart-java;
   # mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
@@ -53,7 +52,7 @@ function _java {
 }
 
 function _alias {
-  wait_ "Install Aliases ?
+  _wait "Install Aliases ?
   if [ ! -f "$BRC" ]; then
     echo ". $BRC" >> /etc/bash.bashrc
   fi
@@ -65,7 +64,7 @@ function _alias {
 }
 
 function _service {
-  wait_ "Install Service ?
+  _wait "Install Service ?
   cp -rp $ROOT/pure-pentaho.service /etc/systemd/system
   chmod u+x /etc/systemd/system/pure-pentaho.service
   systemctl daemon-reload
@@ -75,7 +74,7 @@ function _service {
 }
 
 function _all {
-  wait_ "Full Install ?
+  _wait "Full Install ?
   _rm;
   _java;
   _service;
@@ -86,8 +85,6 @@ function _help {
   echo "USAGE pho-setup.sh | rm | all | java | service | alias | help"
   echo "FULL INSTALL: pho-setup.sh all"    
 }
-
-echo "$1"
 
 if [ "$#" -eq 0 ]; then
   _help;
