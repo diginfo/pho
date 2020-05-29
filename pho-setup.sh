@@ -21,8 +21,8 @@ function rm_ {
   apt remove --purge -y libjfreechart-java default-jdk openjdk-8-jre openjdk-8-jre-headless;
   systemctl disable pure-pentaho.service;
   systemctl stop pure-pentaho;
-  systemctl daemon-reload;
   rm -rf /etc/systemd/system/pure-pentaho.service;
+  systemctl daemon-reload
   apt -y autoremove;
 }
 
