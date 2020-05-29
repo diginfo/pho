@@ -87,10 +87,13 @@ function _help {
   echo "FULL INSTALL: pho-setup.sh all"    
 }
 
+echo "$1"
+
 if [ "$#" -eq 0 ]; then
   _help;
 else
   fn="_$1"
+  echo "$fn"
   "$fn"
 fi
 
