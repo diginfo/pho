@@ -30,7 +30,7 @@ function pho_ {
   echo "@@@ PURE-PENTAHO INSTALLED.";
 }
 
-function _alias {
+function alias_ {
   if [ ! -f "$BRC" ]; then
     echo ". $BRC" >> /etc/bash.bashrc
   fi
@@ -51,6 +51,7 @@ function service_ {
 }
 
 ## Execute
-java_
-#pho_
-service_
+java_;
+service_;
+alias_;
+
