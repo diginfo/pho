@@ -44,7 +44,7 @@ function _rm {
 
 ## Install Java
 function _java {
-  _wait "Update O/S and Install ?"
+  _wait "Update O/S and Install Pentaho ?"
   apt-get -y update;
   apt install -y openjdk-8-jre libjfreechart-java;
   # mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
@@ -52,7 +52,7 @@ function _java {
 }
 
 function _alias {
-  _wait "Install Aliases ?"
+  _wait "Install Pentaho Aliases ?"
   if [ ! -f "$BRC" ]; then
     echo ". $BRC" >> /etc/bash.bashrc
   fi
@@ -64,7 +64,7 @@ function _alias {
 }
 
 function _service {
-  _wait "Install Service ?"
+  _wait "Install Pentaho Service ?"
   cp -rp $ROOT/pure-pentaho.service /etc/systemd/system
   chmod u+x /etc/systemd/system/pure-pentaho.service
   systemctl daemon-reload
@@ -74,7 +74,7 @@ function _service {
 }
 
 function _all {
-  _wait "Full Install ?"
+  _wait "Full Pentaho Install ?"
   _rm;
   _java;
   _service;
