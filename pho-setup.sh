@@ -56,9 +56,7 @@ function _alias {
   if [ ! -f "$BRC" ]; then
     echo ". $BRC" >> /etc/bash.bashrc
   fi
-  echo "alias pure-pentaho-start=\"service pure-pentaho start\"" > $BRC;
-  echo "alias pure-pentaho-stop=\"service pure-pentaho stop\"" >> $BRC;
-  echo "alias pure-pentaho-restart=\"service pure-pentaho restart\"" >> $BRC;
+  echo "alias pure-pentaho=\"service pure-pentaho\"" > $BRC;
   echo "alias pure-pentaho-logs=\"tail -f $ITGT/log/pure-pentaho.log\"" >> $BRC;
   source /etc/bash.bashrc;
 }
