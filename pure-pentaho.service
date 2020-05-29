@@ -7,11 +7,10 @@ WorkingDirectory=/usr/share/java/pho
 Type=forking
 ExecStart=/bin/bash /usr/share/java/pho/pure-pentaho.sh start
 ExecStop=/bin/bash /usr/share/java/pho/pure-pentaho.sh stop
-ExecResart=/bin/bash /usr/share/java/pho/pure-pentaho.sh restart
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
-RestartSec=5
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
