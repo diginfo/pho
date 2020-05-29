@@ -62,7 +62,7 @@ function _all {
 
 function _help {
   echo "USAGE pho-setup.sh | rm | all | java | service | alias | help"
-  echo "FULL INSTALL: pure3-install.sh all"    
+  echo "FULL INSTALL: pho-setup.sh all"    
 }
 
 if [ "$#" -eq 0 ]; then
