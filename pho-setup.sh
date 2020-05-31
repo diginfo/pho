@@ -54,7 +54,7 @@ function _java {
 
 function _alias {
   if [ ! -f "$BRC" ]; then
-    echo ". $BRC" >> /etc/bash.bashrc
+    echo "source $BRC" >> /etc/bash.bashrc
   fi
   echo "alias pure-pentaho=\"service pure-pentaho\"" >> $BRC;
   echo "alias pure-pentaho-start=\"service pure-pentaho start\"" >> $BRC;
