@@ -3,7 +3,7 @@ ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BRC="/etc/bashrc.dis";
 
 if [ $ROOT != "$ITGT" ]; then
-  echo "Please install in $TGT"
+  echo "Please install in $ITGT"
   exit 0;
 fi
 
@@ -56,7 +56,9 @@ function _alias {
   if [ ! -f "$BRC" ]; then
     echo "source $BRC" >> /etc/bash.bashrc
   fi
+  echo "## PURE-PENTAHO" >> $BRC;
   echo "alias pure-pentaho=\"service pure-pentaho\"" >> $BRC;
+  echo "alias pure-pentaho-help=\"$ITGT/pho-setup.sh readme\"" >> $BRC;
   echo "alias pure-pentaho-start=\"service pure-pentaho start\"" >> $BRC;
   echo "alias pure-pentaho-stop=\"service pure-pentaho stop\"" >> $BRC;
   echo "alias pure-pentaho-restart=\"service pure-pentaho restart\"" >> $BRC;
