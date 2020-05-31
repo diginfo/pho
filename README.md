@@ -28,6 +28,7 @@ cd /usr/share/java/pho;
   * service pure-pentaho status
 
 ## Command Aliases
+  * pure-pentaho-help
   * pure-pentaho-start
   * pure-pentaho-stop
   * pure-pentaho-restart
