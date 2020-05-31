@@ -13,8 +13,9 @@ TGT="/usr/share/java";
 REPO="https://github.com/diginfo/pho.git";
 BASHDIS="/etc/bashrc.dis";
 
-# -Djava.awt.headless=true = no-charts
-# -Djava.awt.headless=false = crash
+# jfrecharts errors.
+## use openjdk-8-jre and NOT openjdk-8-jre-headless
+## also needs "-Djava.awt.headless=true"
 
 ## Prompt Continue
 function _continue {
@@ -52,11 +53,14 @@ function _java {
 }
 
 function _alias {
-  _wait "Install Pentaho Aliases ?"
   if [ ! -f "$BRC" ]; then
     echo ". $BRC" >> /etc/bash.bashrc
   fi
-  echo "alias pure-pentaho=\"service pure-pentaho\"" > $BRC;
+  echo "alias pure-pentaho=\"service pure-pentaho\"" >> $BRC;
+  echo "alias pure-pentaho-start=\"service pure-pentaho start\"" >> $BRC;
+  echo "alias pure-pentaho-stop=\"service pure-pentaho stop\"" >> $BRC;
+  echo "alias pure-pentaho-restart=\"service pure-pentaho restart\"" >> $BRC;
+  echo "alias pure-pentaho-status=\"service pure-pentaho status\"" >> $BRC;
   echo "alias pure-pentaho-logs=\"tail -f $ITGT/log/pure-pentaho.log\"" >> $BRC;
   source /etc/bash.bashrc;
 }
@@ -79,9 +83,20 @@ function _all {
   _alias;  
 }
 
+function _logo {
+  echo "   ___  __  _____  ____    ___  _____  ___________   __ ______ "
+  echo "  / _ \/ / / / _ \/ __/___/ _ \/ __/ |/ /_  __/ _ | / // / __ \"
+  echo " / ___/ /_/ / , _/ _//___/ ___/ _//    / / / / __ |/ _  / /_/ /"
+  echo "/_/   \____/_/|_/___/   /_/  /___/_/|_/ /_/ /_/ |_/_//_/\____/ "
+  echo
+}
+
+function _readme {
+  ./glow README.md
+}
+
 function _help {
-  echo "USAGE pho-setup.sh | rm | all | java | service | alias | help"
-  echo "FULL INSTALL: pho-setup.sh all"    
+  _readme;   
 }
 
 if [ "$#" -eq 0 ]; then
@@ -91,3 +106,4 @@ else
   "$fn"
 fi
 
+_logo;

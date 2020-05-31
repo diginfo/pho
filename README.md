@@ -1,25 +1,35 @@
-<h1>Pure Pentaho Report Server</h1>
+<pre>
+   ___  __  _____  ____    ___  _____  ___________   __ ______ 
+  / _ \/ / / / _ \/ __/___/ _ \/ __/ |/ /_  __/ _ | / // / __ \
+ / ___/ /_/ / , _/ _//___/ ___/ _//    / / / / __ |/ _  / /_/ /
+/_/   \____/_/|_/___/   /_/  /___/_/|_/ /_/ /_/ |_/_//_/\____/                                                                
+</pre>
 
-<h2>Install</h2>
+# Pure-Pentaho Report Server
+
+## Installation
 
 ```bash
-  cd /usr/share/java
-  git clone https://github.com/diginfo/pho.git
-  cd /usr/share/java/pho
-  ./pho-setup.sh
+cd /usr/share/java;
+git clone https://github.com/diginfo/pho.git;
+cd /usr/share/java/pho;
+./pho-setup.sh;
 ```
 
-<h2>Service</h2>
-<ul>
-  <li>service pure-pentaho start</li>
-  <li>service pure-pentaho stop</li>
-  <li>service pure-pentaho restart</li>
-</ul>
+## Install Options
+  * STEPS: ./pho-setup.sh |rm|all|java|service|alias
+  * FULL:  ./pho-setup.sh all 
+  * HELP:  ./pho-setup.sh help|readme 
 
-<h2>Command Aliases</h2>
-<ul>
-  <li>pure-pentaho-start</li>
-  <li>pure-pentaho-stop</li>
-  <li>pure-pentaho-restart</li>
-  <li>pure-pentaho-logs</li>
-</ul>
+## Services
+  * service pure-pentaho start
+  * service pure-pentaho stop
+  * service pure-pentaho restart
+  * service pure-pentaho status
+
+## Command Aliases
+  * pure-pentaho-start
+  * pure-pentaho-stop
+  * pure-pentaho-restart
+  * pure-pentaho-status
+  * pure-pentaho-logs
