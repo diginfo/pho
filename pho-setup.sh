@@ -69,7 +69,7 @@ function _alias {
 function _service {
   _wait "Install Pentaho Service ?"
   cp -rp $ROOT/pure-pentaho.service /etc/systemd/system
-  chmod u+x /etc/systemd/system/pure-pentaho.service
+  # chmod u+x /etc/systemd/system/pure-pentaho.service
   systemctl daemon-reload
   systemctl enable pure-pentaho.service
   systemctl start pure-pentaho
