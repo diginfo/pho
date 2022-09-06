@@ -1,4 +1,5 @@
-ITGT="/usr/share/java/pho"
+# ITGT="/usr/share/java/pho"
+ITGT="/usr/share/dis/pho"
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BRC="/etc/bashrc.dis";
 
@@ -35,7 +36,11 @@ function _wait {
 
 function _rm {
   _wait "Remove & Purge Java & Pentaho ?"
-  apt remove --purge -y libjfreechart-java default-jdk openjdk-8-jre openjdk-8-jre-headless;
+  
+  # 220906 - WLH
+  ## apt remove --purge -y libjfreechart-java default-jdk openjdk-8-jre openjdk-8-jre-headless;
+  apt remove --purge -y libjfreechart-java default-jdk;
+  
   systemctl disable pure-pentaho.service;
   systemctl stop pure-pentaho;
   rm -rf /etc/systemd/system/pure-pentaho.service;
@@ -47,7 +52,11 @@ function _rm {
 function _java {
   _wait "Update O/S and Install Pentaho ?"
   apt-get -y update;
-  apt install -y openjdk-8-jre libjfreechart-java;
+  
+  # 220906 - WLH
+  ## apt install -y openjdk-8-jre libjfreechart-java;
+  apt install -y libjfreechart-java;
+  
   # mv /etc/java-8-openjdk/accessibility.properties /etc/java-8-openjdk/accessibility.properties.orig;
   # echo -e "## file moved to accessibility.properties.orig by pho-setup.sh\n\n" > /etc/java-8-openjdk/accessibility.properties
 }

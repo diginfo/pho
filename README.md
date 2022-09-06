@@ -10,9 +10,9 @@
 ## Installation
 
 ```bash
-cd /usr/share/java;
+cd /usr/share/dis;
 git clone https://github.com/diginfo/pho.git;
-cd /usr/share/java/pho;
+cd /usr/share/dis/pho;
 ./pho-setup.sh;
 ```
 

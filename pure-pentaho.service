@@ -3,10 +3,10 @@ Description=Pure Pentaho Server
 
 [Service]
 User=root
-WorkingDirectory=/usr/share/java/pho
+WorkingDirectory=/usr/share/dis/pho
 Type=forking
-ExecStart=/bin/bash /usr/share/java/pho/pure-pentaho.sh start
-ExecStop=/bin/bash /usr/share/java/pho/pure-pentaho.sh stop
+ExecStart=/bin/bash /usr/share/dis/pho/pure-pentaho.sh start
+ExecStop=/bin/bash /usr/share/dis/pho/pure-pentaho.sh stop
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
