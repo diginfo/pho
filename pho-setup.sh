@@ -10,7 +10,6 @@ fi
 
 cd $ROOT
 
-TGT="/usr/share/java";
 REPO="https://github.com/diginfo/pho.git";
 BASHDIS="/etc/bashrc.dis";
 
